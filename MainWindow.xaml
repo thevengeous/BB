@@ -8,6 +8,6 @@
     <Grid>
         <wpf:ChromiumWebBrowser
             x:Name="Browser"
-            Address="https://wh40k.lexicanum.com/wiki/Main_Page" />
+            Address="https://google.com" />
     </Grid>
 </Window>
