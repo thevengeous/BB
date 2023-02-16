@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CefSharp;
 using CefSharp.Wpf;
+using System.IO;
 
 namespace BB
 {
@@ -22,20 +23,43 @@ namespace BB
     /// </summary>
     public partial class MainWindow : Window
     {
-        ChromiumWebBrowser chromiumWebBrowser = null;
+        private readonly HashSet<string> filterList;
         public MainWindow()
         {
             Init();
+            string easyList = File.ReadAllText("easylist.txt");
+            filterList = new HashSet<string>(easyList.Split('\n'), StringComparer.OrdinalIgnoreCase);
         }
         public void Init()
         {
             var settings = new CefSettings();
             Cef.Initialize(settings);
+            Console.WriteLine("Deeznutsickles");
+            
+        }
+
+        //this shit is not functional
+        public bool OnBeforeResourceLoad(IRequest request, IRequestCallback callback)
+        {
+            // Check if the request URL matches any of the filter rules
+            if (filterList.Any(filter => request.Url.Contains(filter)))
+            {
+                // Cancel the request
+                callback.Dispose();
+                Console.WriteLine("Supposed adblocking");
+                return true;
+            }
+            return false;
+        }
+
+        void CheckForAd()
+        {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Browser.Load(SearchBox.Text);
+            //OnBeforeResourceLoad(Browser.RequestHandler, Browser.cal);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
