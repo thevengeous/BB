@@ -8,6 +8,8 @@
     <Grid>
         <wpf:ChromiumWebBrowser
             x:Name="Browser"
-            Address="https://google.com" />
+            Address="https://google.com"/>
+        <TextBox x:Name="SearchBox" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,52,0" Height="25" TextAlignment="Left" VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged" HorizontalScrollBarVisibility="Disabled"/>
+        <Button x:Name="SearchButton" Content="Search" HorizontalAlignment="Right" Margin="473,0,0,0" VerticalAlignment="Top" Height="25" Click="Button_Click" Width="52"/>
     </Grid>
 </Window>

@@ -32,5 +32,15 @@ namespace BB
             var settings = new CefSettings();
             Cef.Initialize(settings);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Browser.Load(SearchBox.Text);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
