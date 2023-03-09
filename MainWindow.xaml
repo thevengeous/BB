@@ -8,16 +8,18 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="86*"/>
-            <ColumnDefinition Width="399*"/>
+            <ColumnDefinition Width="328*"/>
+            <ColumnDefinition Width="71*"/>
         </Grid.ColumnDefinitions>
         <wpf:ChromiumWebBrowser
             x:Name="Browser"
-            Address="https://google.com" Grid.ColumnSpan="3" Margin="0,25,0,0"/>
-        <TextBox x:Name="SearchBox" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,52,0" Height="25" TextAlignment="Left" VerticalContentAlignment="Center"  HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="3"/>
-        <Button x:Name="SearchButton" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Click="Button_Click" Width="52" Grid.Column="2"/>
-        <Expander x:Name="BookmarkExpander" HorizontalAlignment="Left" Height="100" Header="" Margin="0,25,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" HorizontalContentAlignment="Left" Visibility="Visible" IsExpanded="False">
-            <Button x:Name="AddBookmarkButton" Content="+" VerticalAlignment="Top" HorizontalAlignment="Center" ClickMode="Release" Click="AddBookmarkButton_Click"/>
+            Address="https://google.com" Grid.ColumnSpan="5" Margin="0,25,0,0"/>
+        <TextBox x:Name="SearchBox" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,52,0" Height="25" TextAlignment="Left" VerticalContentAlignment="Center"  HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="5"/>
+        <Button x:Name="SearchButton" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" Click="Button_Click" Width="52" Grid.Column="4"/>
+        <Expander x:Name="TextFinder" HorizontalAlignment="Left" Height="50" Header="" Margin="0,25,0,0" VerticalAlignment="Top" Width="200" Grid.ColumnSpan="4" HorizontalContentAlignment="Left" Visibility="Visible">
+            <TextBox x:Name="FindBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextChanged="TextBox_TextChanged"/>
         </Expander>
 
     </Grid>

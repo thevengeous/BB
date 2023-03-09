@@ -40,17 +40,6 @@ namespace BB
             
         }
 
-        void GenerateNewBookmark(string name)
-        {
-            Button button = new Button();
-
-            button.Height = 80;
-
-            button.Width = 150;
-
-            button.Content = "Click ME";
-        }
-
 
         private void BookMarkControl_Click(object sender, EventArgs e)
         {
@@ -73,11 +62,18 @@ namespace BB
             //OnBeforeResourceLoad(Browser.RequestHandler, Browser.cal);
         }
 
-        private void AddBookmarkButton_Click(object sender, RoutedEventArgs e)
-        {
-            bookmarkLinks.Add(Browser.Address);
-            GenerateNewBookmark(Browser.Address);
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (FindBox.Text.Length <= 0)
+            {
+                //this will clear all search result
+                Browser.StopFinding(true);
+            }
+            else
+            {
+                Browser.Find(FindBox.Text, true, false, false);
+            }
         }
     }
 }
