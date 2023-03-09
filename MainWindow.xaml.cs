@@ -24,6 +24,7 @@ namespace BB
     public partial class MainWindow : Window
     {
         private readonly HashSet<string> filterList;
+        List<string> bookmarkLinks = new List<string>();
         public MainWindow()
         {
             Init();
@@ -35,35 +36,47 @@ namespace BB
             var settings = new CefSettings();
             Cef.Initialize(settings);
             Console.WriteLine("Deeznutsickles");
+           // BookMarkControl.MouseLeftButtonUp += null;
             
         }
 
-        //this shit is not functional
-        public bool OnBeforeResourceLoad(IRequest request, IRequestCallback callback)
+        void GenerateNewBookmark(string name)
         {
-            // Check if the request URL matches any of the filter rules
-            if (filterList.Any(filter => request.Url.Contains(filter)))
-            {
-                // Cancel the request
-                callback.Dispose();
-                Console.WriteLine("Supposed adblocking");
-                return true;
-            }
-            return false;
+            Button button = new Button();
+
+            button.Height = 80;
+
+            button.Width = 150;
+
+            button.Content = "Click ME";
         }
 
-        void CheckForAd()
+
+        private void BookMarkControl_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Added Bookmark");
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Browser.Load(SearchBox.Text);
+            //Browser.Load(SearchBox.Text);
+            try
+            {
+                Browser.Load($"https://www.google.com/search?q={SearchBox.Text}");
+            }
+            catch
+            {
+
+            }
+            //Browser.Find(SearchBox.Text, true, false, false);
             //OnBeforeResourceLoad(Browser.RequestHandler, Browser.cal);
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void AddBookmarkButton_Click(object sender, RoutedEventArgs e)
         {
+            bookmarkLinks.Add(Browser.Address);
+            GenerateNewBookmark(Browser.Address);
 
         }
     }
