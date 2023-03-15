@@ -26,7 +26,7 @@ namespace BB
         public MainWindow()
         {
             Init();
-
+            //AddBrowserTab();
         }
         public void Init()
         {
@@ -70,6 +70,28 @@ namespace BB
             {
                 Browser.Find(FindBox.Text, true, false, false);
             }
+        }
+
+        private void BrowserTabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //AddBrowserTab();
+        }
+
+        void AddBrowserTab()
+        {
+            TabItem newTab = new TabItem
+            {
+                Header = $"Tab",
+                Name = $"Tab"
+            };
+            //newTab.Content = BrowserTabs.;
+            BrowserTabs.Items.Add(newTab);
+            newTab.Content = new ChromiumWebBrowser();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddBrowserTab();
         }
     }
 }
