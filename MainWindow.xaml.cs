@@ -23,20 +23,16 @@ namespace BB
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly HashSet<string> filterList;
-        List<string> bookmarkLinks = new List<string>();
         public MainWindow()
         {
             Init();
-            string easyList = File.ReadAllText("easylist.txt");
-            filterList = new HashSet<string>(easyList.Split('\n'), StringComparer.OrdinalIgnoreCase);
+
         }
         public void Init()
         {
             var settings = new CefSettings();
             Cef.Initialize(settings);
             Console.WriteLine("Deeznutsickles");
-           // BookMarkControl.MouseLeftButtonUp += null;
             
         }
 
@@ -46,13 +42,13 @@ namespace BB
             Console.WriteLine("Added Bookmark");
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Browser.Load(SearchBox.Text);
+
             try
             {
                 Browser.Load($"https://www.google.com/search?q={SearchBox.Text}");
+                MainAppWindow.Title = SearchBox.Text;
             }
             catch
             {
