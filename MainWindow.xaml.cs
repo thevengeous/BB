@@ -35,8 +35,6 @@ namespace BB
         {
             var settings = new CefSettings();
             Cef.Initialize(settings);
-            Console.WriteLine("Deeznutsickles");
-           // BookMarkControl.MouseLeftButtonUp += null;
             
         }
 
@@ -49,7 +47,7 @@ namespace BB
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Browser.Load(SearchBox.Text);
+
             try
             {
                 Browser.Load($"https://www.google.com/search?q={SearchBox.Text}");
@@ -58,8 +56,7 @@ namespace BB
             {
 
             }
-            //Browser.Find(SearchBox.Text, true, false, false);
-            //OnBeforeResourceLoad(Browser.RequestHandler, Browser.cal);
+
         }
 
 
@@ -67,7 +64,7 @@ namespace BB
         {
             if (FindBox.Text.Length <= 0)
             {
-                //this will clear all search result
+                //this will clear all search results
                 Browser.StopFinding(true);
             }
             else
