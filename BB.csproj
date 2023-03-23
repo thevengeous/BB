@@ -132,6 +132,9 @@
   <ItemGroup>
     <Resource Include="easylist.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
