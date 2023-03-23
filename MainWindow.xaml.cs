@@ -28,8 +28,7 @@ namespace BB
         public MainWindow()
         {
             Init();
-            string easyList = File.ReadAllText("easylist.txt");
-            filterList = new HashSet<string>(easyList.Split('\n'), StringComparer.OrdinalIgnoreCase);
+
         }
         public void Init()
         {
